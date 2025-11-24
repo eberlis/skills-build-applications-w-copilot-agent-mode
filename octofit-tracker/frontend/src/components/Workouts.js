@@ -6,10 +6,11 @@ function Workouts() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    // API endpoint: https://${REACT_APP_CODESPACE_NAME}-8000.app.github.dev/api/workouts/
     const baseUrl = process.env.REACT_APP_CODESPACE_NAME 
-      ? `https://${process.env.REACT_APP_CODESPACE_NAME}-8000.app.github.dev`
-      : 'http://localhost:8000';
-    const apiUrl = `${baseUrl}/api/workouts/`;
+      ? `https://${process.env.REACT_APP_CODESPACE_NAME}-8000.app.github.dev/api/workouts/`
+      : 'http://localhost:8000/api/workouts/';
+    const apiUrl = baseUrl;
     console.log('Workouts API endpoint:', apiUrl);
 
     fetch(apiUrl)

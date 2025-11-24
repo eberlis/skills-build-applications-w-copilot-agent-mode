@@ -6,10 +6,11 @@ function Leaderboard() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    // API endpoint: https://${REACT_APP_CODESPACE_NAME}-8000.app.github.dev/api/leaderboard/
     const baseUrl = process.env.REACT_APP_CODESPACE_NAME 
-      ? `https://${process.env.REACT_APP_CODESPACE_NAME}-8000.app.github.dev`
-      : 'http://localhost:8000';
-    const apiUrl = `${baseUrl}/api/leaderboard/`;
+      ? `https://${process.env.REACT_APP_CODESPACE_NAME}-8000.app.github.dev/api/leaderboard/`
+      : 'http://localhost:8000/api/leaderboard/';
+    const apiUrl = baseUrl;
     console.log('Leaderboard API endpoint:', apiUrl);
 
     fetch(apiUrl)
