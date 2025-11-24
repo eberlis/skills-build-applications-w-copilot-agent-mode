@@ -9,7 +9,7 @@ function Workouts() {
     const baseUrl = process.env.REACT_APP_CODESPACE_NAME 
       ? `https://${process.env.REACT_APP_CODESPACE_NAME}-8000.app.github.dev`
       : 'http://localhost:8000';
-    const apiUrl = `${baseUrl}/workouts/`;
+    const apiUrl = `${baseUrl}/api/workouts/`;
     console.log('Workouts API endpoint:', apiUrl);
 
     fetch(apiUrl)

@@ -9,7 +9,7 @@ function Leaderboard() {
     const baseUrl = process.env.REACT_APP_CODESPACE_NAME 
       ? `https://${process.env.REACT_APP_CODESPACE_NAME}-8000.app.github.dev`
       : 'http://localhost:8000';
-    const apiUrl = `${baseUrl}/leaderboard/`;
+    const apiUrl = `${baseUrl}/api/leaderboard/`;
     console.log('Leaderboard API endpoint:', apiUrl);
 
     fetch(apiUrl)

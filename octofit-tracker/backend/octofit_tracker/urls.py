@@ -32,7 +32,7 @@ def api_root(request):
     import os
     codespace_name = os.environ.get('CODESPACE_NAME')
     if codespace_name:
-        base_url = f"https://{codespace_name}-8000.app.github.dev/"
+        base_url = f"https://{codespace_name}-8000.app.github.dev/api/"
     else:
         base_url = request.build_absolute_uri('/')
         if not base_url.endswith('/'):
@@ -47,6 +47,6 @@ def api_root(request):
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', api_root, name='api_root'),
-    path('', include(router.urls)),
+    path('api/', api_root, name='api_root'),
+    path('api/', include(router.urls)),
 ]
