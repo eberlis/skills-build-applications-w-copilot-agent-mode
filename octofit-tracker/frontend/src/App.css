@@ -1,15 +1,61 @@
 .App {
   min-height: 100vh;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-attachment: fixed;
 }
 
 .navbar {
-  box-shadow: 0 2px 4px rgba(0,0,0,.1);
+  background: linear-gradient(90deg, #1e3c72 0%, #2a5298 50%, #667eea 100%) !important;
+  box-shadow: 0 4px 6px rgba(0,0,0,.2);
 }
 
 .navbar-brand {
   font-weight: bold;
   font-size: 1.5rem;
+  color: #fff !important;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.navbar-brand:hover {
+  color: #ffd700 !important;
+  transform: scale(1.05);
+  transition: all 0.3s ease;
+}
+
+.navbar-logo {
+  height: 40px;
+  width: auto;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,.3));
+}
+
+.nav-link {
+  color: #fff !important;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-link:hover {
+  color: #ffd700 !important;
+  transform: translateY(-2px);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  background-color: #ffd700;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+  width: 80%;
 }
 
 .container {
@@ -22,11 +68,17 @@
 }
 
 .page-header {
-  color: #667eea;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   font-weight: bold;
   margin-bottom: 30px;
   padding-bottom: 15px;
-  border-bottom: 3px solid #667eea;
+  border-bottom: 4px solid transparent;
+  border-image: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  border-image-slice: 1;
+  text-shadow: 2px 2px 4px rgba(0,0,0,.1);
 }
 
 .table {
@@ -34,8 +86,9 @@
 }
 
 .table thead {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #667eea 100%);
   color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,.2);
 }
 
 .table thead th {
@@ -45,6 +98,8 @@
   font-size: 0.85rem;
   letter-spacing: 0.5px;
   padding: 15px;
+  color: #ffffff;
+  text-shadow: 1px 1px 2px rgba(0,0,0,.3);
 }
 
 .table tbody tr {
@@ -52,9 +107,10 @@
 }
 
 .table tbody tr:hover {
-  background-color: #f8f9fa;
+  background: linear-gradient(90deg, #f8f9fa 0%, #e3e7ff 100%);
   transform: scale(1.01);
-  box-shadow: 0 2px 4px rgba(0,0,0,.1);
+  box-shadow: 0 4px 8px rgba(102, 126, 234, .2);
+  border-left: 4px solid #667eea;
 }
 
 .card {
@@ -83,15 +139,34 @@
 .btn-primary {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   padding: 10px 20px;
   font-weight: 600;
   transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,.15);
+  color: white;
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0,0,0,.2);
+  box-shadow: 0 6px 12px rgba(102, 126, 234, .4);
+  background: linear-gradient(135deg, #7b8ff0 0%, #8c5fb8 100%);
+}
+
+.btn-outline-primary {
+  border: 2px solid #667eea;
+  color: #667eea;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-color: #667eea;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(102, 126, 234, .3);
 }
 
 .badge-rank {
@@ -103,26 +178,35 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  font-weight: bold;
+  box-shadow: 0 3px 6px rgba(0,0,0,.3);
 }
 
 .badge-gold {
   background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
   color: white;
+  text-shadow: 1px 1px 2px rgba(0,0,0,.3);
+  box-shadow: 0 4px 8px rgba(255, 215, 0, .5);
 }
 
 .badge-silver {
-  background: linear-gradient(135deg, #C0C0C0 0%, #808080 100%);
-  color: white;
+  background: linear-gradient(135deg, #E8E8E8 0%, #A0A0A0 100%);
+  color: #333;
+  text-shadow: 1px 1px 2px rgba(255,255,255,.5);
+  box-shadow: 0 4px 8px rgba(192, 192, 192, .5);
 }
 
 .badge-bronze {
   background: linear-gradient(135deg, #CD7F32 0%, #8B4513 100%);
   color: white;
+  text-shadow: 1px 1px 2px rgba(0,0,0,.3);
+  box-shadow: 0 4px 8px rgba(205, 127, 50, .5);
 }
 
 .badge-default {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
+  text-shadow: 1px 1px 2px rgba(0,0,0,.2);
 }
 
 .loading-spinner {
@@ -132,9 +216,62 @@
   min-height: 200px;
 }
 
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+  border-width: 0.3rem;
+}
+
 .alert {
   border-radius: 10px;
   border: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,.1);
+}
+
+.alert-danger {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+  color: white;
+}
+
+.alert-danger .alert-heading {
+  color: white;
+  font-weight: bold;
+}
+
+/* Enhanced Badge Colors */
+.badge {
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,.1);
+}
+
+.badge.bg-secondary {
+  background: linear-gradient(135deg, #6c757d 0%, #5a6268 100%) !important;
+}
+
+.badge.bg-info {
+  background: linear-gradient(135deg, #17a2b8 0%, #138496 100%) !important;
+}
+
+.badge.bg-success {
+  background: linear-gradient(135deg, #28a745 0%, #218838 100%) !important;
+}
+
+.badge.bg-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+}
+
+.badge.bg-warning {
+  background: linear-gradient(135deg, #ffc107 0%, #e0a800 100%) !important;
+}
+
+.badge.bg-danger {
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%) !important;
+}
+
+.badge.rounded-pill {
+  padding: 8px 16px;
 }
 
 .welcome-section {
@@ -143,12 +280,67 @@
 }
 
 .welcome-section h1 {
-  color: #667eea;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   font-weight: bold;
   margin-bottom: 20px;
+  font-size: 3rem;
 }
 
 .welcome-section p.lead {
-  color: #6c757d;
+  color: #2a5298;
   font-size: 1.25rem;
+  font-weight: 500;
+}
+
+/* Text Color Enhancements */
+.text-muted {
+  color: #5a6c7d !important;
+}
+
+strong {
+  color: #2a5298;
+  font-weight: 700;
+}
+
+/* Table body text colors */
+.table tbody td {
+  color: #495057;
+  font-weight: 500;
+}
+
+/* Animation for page load */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.container {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.card {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+/* Hover effect for cards with colored border */
+.card:hover {
+  border-top: 4px solid #667eea;
+}
+
+/* Enhanced table row colors */
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(102, 126, 234, 0.05);
+}
+
+.table-striped tbody tr:nth-of-type(even) {
+  background-color: rgba(255, 255, 255, 1);
 }
