@@ -33,14 +33,37 @@ function Users() {
       });
   }, []);
 
-  if (loading) return <div className="container mt-4"><p>Loading users...</p></div>;
-  if (error) return <div className="container mt-4"><p className="text-danger">Error: {error}</p></div>;
+  if (loading) {
+    return (
+      <div className="container mt-4">
+        <div className="loading-spinner">
+          <div className="spinner-border text-primary" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+  
+  if (error) {
+    return (
+      <div className="container mt-4">
+        <div className="alert alert-danger" role="alert">
+          <h4 className="alert-heading">Error!</h4>
+          <p>{error}</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="container mt-4">
-      <h2>Users</h2>
+      <h1 className="page-header">👥 Users</h1>
+      <div className="mb-3">
+        <p className="text-muted">Total Users: <strong>{users.length}</strong></p>
+      </div>
       <div className="table-responsive">
-        <table className="table table-striped">
+        <table className="table table-hover table-striped align-middle">
           <thead>
             <tr>
               <th>ID</th>
@@ -54,8 +77,8 @@ function Users() {
           <tbody>
             {users.map(user => (
               <tr key={user.id}>
-                <td>{user.id}</td>
-                <td>{user.username}</td>
+                <td><span className="badge bg-secondary">{user.id}</span></td>
+                <td><strong>{user.username}</strong></td>
                 <td>{user.email}</td>
                 <td>{user.age || 'N/A'}</td>
                 <td>{user.weight || 'N/A'}</td>

@@ -33,22 +33,49 @@ function Teams() {
       });
   }, []);
 
-  if (loading) return <div className="container mt-4"><p>Loading teams...</p></div>;
-  if (error) return <div className="container mt-4"><p className="text-danger">Error: {error}</p></div>;
+  if (loading) {
+    return (
+      <div className="container mt-4">
+        <div className="loading-spinner">
+          <div className="spinner-border text-primary" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+  
+  if (error) {
+    return (
+      <div className="container mt-4">
+        <div className="alert alert-danger" role="alert">
+          <h4 className="alert-heading">Error!</h4>
+          <p>{error}</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="container mt-4">
-      <h2>Teams</h2>
-      <div className="row">
+      <h1 className="page-header">👥 Teams</h1>
+      <div className="mb-4">
+        <p className="text-muted">Total Teams: <strong>{teams.length}</strong></p>
+      </div>
+      <div className="row g-4">
         {teams.map(team => (
-          <div key={team.id} className="col-md-4 mb-3">
-            <div className="card">
+          <div key={team.id} className="col-md-4">
+            <div className="card h-100">
               <div className="card-body">
                 <h5 className="card-title">{team.name}</h5>
                 <p className="card-text">{team.description}</p>
-                <p className="card-text">
-                  <small className="text-muted">Members: {team.members?.length || 0}</small>
-                </p>
+                <hr />
+                <div className="d-flex justify-content-between align-items-center">
+                  <span className="badge bg-primary rounded-pill">
+                    {team.members?.length || 0} Members
+                  </span>
+                  <button className="btn btn-sm btn-outline-primary">View Details</button>
+                </div>
               </div>
             </div>
           </div>

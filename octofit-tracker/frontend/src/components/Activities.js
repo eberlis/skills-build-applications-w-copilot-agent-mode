@@ -33,14 +33,37 @@ function Activities() {
       });
   }, []);
 
-  if (loading) return <div className="container mt-4"><p>Loading activities...</p></div>;
-  if (error) return <div className="container mt-4"><p className="text-danger">Error: {error}</p></div>;
+  if (loading) {
+    return (
+      <div className="container mt-4">
+        <div className="loading-spinner">
+          <div className="spinner-border text-primary" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+  
+  if (error) {
+    return (
+      <div className="container mt-4">
+        <div className="alert alert-danger" role="alert">
+          <h4 className="alert-heading">Error!</h4>
+          <p>{error}</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="container mt-4">
-      <h2>Activities</h2>
+      <h1 className="page-header">🏃 Activities</h1>
+      <div className="mb-3">
+        <p className="text-muted">Total Activities: <strong>{activities.length}</strong></p>
+      </div>
       <div className="table-responsive">
-        <table className="table table-striped">
+        <table className="table table-hover table-striped align-middle">
           <thead>
             <tr>
               <th>ID</th>
@@ -54,11 +77,11 @@ function Activities() {
           <tbody>
             {activities.map(activity => (
               <tr key={activity.id}>
-                <td>{activity.id}</td>
-                <td>{activity.user}</td>
-                <td>{activity.activity_type}</td>
+                <td><span className="badge bg-secondary">{activity.id}</span></td>
+                <td><strong>{activity.user}</strong></td>
+                <td><span className="badge bg-info text-dark">{activity.activity_type}</span></td>
                 <td>{activity.duration}</td>
-                <td>{activity.calories_burned}</td>
+                <td><span className="badge bg-success">{activity.calories_burned} cal</span></td>
                 <td>{new Date(activity.date).toLocaleDateString()}</td>
               </tr>
             ))}
